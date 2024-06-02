@@ -1,3 +1,5 @@
+### NOTE: To setup your dronekit, ardupilot and Gazebo Garden in Ubuntu 22, go to this [repo](https://github.com/B6Infinity/dronekit-in-ubuntu22).
+
 # Make sure to have the following installed:
 
 - Gazebo Sim 7 (Garden)
@@ -15,4 +17,4 @@ There are 2 main files:
 - `dev.py`
     - This is the file where you do your image processing. This file is the boiler plate where you get the `frame` variable as an `np.ndarray` and you do the conventional image processing that you would generally do.
 
-The drone is stationary upon launch and can be controlled from a seperate terminal via Dronekit.
+The drone is stationary upon launch and can be controlled from a seperate terminal via [Dronekit](https://dronekit-python.readthedocs.io/en/latest/).
