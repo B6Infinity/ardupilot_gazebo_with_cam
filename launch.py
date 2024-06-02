@@ -8,14 +8,15 @@ START_SIM = 1
 START_SITL = 1
 
 
+WORLD = "iris_runway_custom.sdf"
 SIM_VEHICLE_PATH = "~/ardupilot/Tools/autotest/sim_vehicle.py" # !NOT USED below
 MODEL_PATH = ""
 WORLDS_PATH = ""
 
                                      # $simvehicle_path
-# LAUNCH_SITL_COMMAND = "python3 ~/gh_repos/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
-LAUNCH_SITL_COMMAND = "python3 ~/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
-LAUNCH_SIMULATION_COMMAND = "gz sim -r iris_runway_custom.sdf"
+LAUNCH_SITL_COMMAND = "python3 ~/gh_repos/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
+# LAUNCH_SITL_COMMAND = "python3 ~/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
+LAUNCH_SIMULATION_COMMAND = f"gz sim -r {WORLD}"
 ROS_GZ_BRIDGE_COMMAND = "ros2 run ros_gz_bridge parameter_bridge /camera@sensor_msgs/msg/Image[gz.msgs.Image"
 
 
@@ -50,7 +51,11 @@ THREAD_SIM = threading.Thread(target=fireSIM)
 THREAD_SITL = threading.Thread(target=lambda: subprocess.call(['gnome-terminal', '--', 'python3', '-c', f'import os; os.system("{LAUNCH_SITL_COMMAND}")']))
 
 if START_SIM:
+    print("Starting SIM...")
     THREAD_SIM.start()
 if START_SITL:
     sleep(5)
+    print("Starting SITL...")
     THREAD_SITL.start()
+
+print("All threads started successfully! You should see 3 terminals in total including this one...")
