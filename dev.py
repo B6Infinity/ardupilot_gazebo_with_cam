@@ -13,7 +13,7 @@ from cv_bridge import CvBridge
 class MinimalSubscriber(Node):
 
     def __init__(self):
-        print(f"\rInitialising...", end="", flush=True)
+        print("Initialising...")
 
         super().__init__('minimal_subscriber')
         self.subscription = self.create_subscription(
@@ -39,10 +39,6 @@ class MinimalSubscriber(Node):
 def main(args=None):
     rclpy.init(args=args)
     cam_feedback = MinimalSubscriber()
-
-
-
-
 
     rclpy.spin(cam_feedback)
     cam_feedback.destroy_node()
