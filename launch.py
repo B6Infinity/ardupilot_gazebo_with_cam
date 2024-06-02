@@ -13,8 +13,8 @@ MODEL_PATH = ""
 WORLDS_PATH = ""
 
                                      # $simvehicle_path
-LAUNCH_SITL_COMMAND = "python3 ~/gh_repos/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
-# LAUNCH_SITL_COMMAND = "python3 ~/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
+# LAUNCH_SITL_COMMAND = "python3 ~/gh_repos/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
+LAUNCH_SITL_COMMAND = "python3 ~/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
 LAUNCH_SIMULATION_COMMAND = "gz sim -r iris_runway_custom.sdf"
 ROS_GZ_BRIDGE_COMMAND = "ros2 run ros_gz_bridge parameter_bridge /camera@sensor_msgs/msg/Image[gz.msgs.Image"
 
