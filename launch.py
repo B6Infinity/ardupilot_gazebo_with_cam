@@ -2,13 +2,31 @@
 # =------------------------------=
 # Author: Broteen Das
 
+import sys
+
 # GLOBAL PARAMETERS:-
 
-START_SIM = 1
-START_SITL = 1
+START_SITL = None
+START_SIM = None
+gaz_verbose = ''
+
+if '-sim' in sys.argv:
+    START_SIM = 1
+    START_SITL = 0
+elif '-sitl' in sys.argv:
+    START_SIM = 0
+    START_SITL = 1
+else:
+    START_SIM = 1
+    START_SITL = 1
+
+if '-v' in sys.argv:
+    gaz_verbose = '-v 4'
 
 
-WORLD = "iris_runway_custom.sdf"
+
+
+WORLD = "aerothon_ground2.sdf" # or you can switch to 'iris_runway_custom.sdf'
 SIM_VEHICLE_PATH = "~/ardupilot/Tools/autotest/sim_vehicle.py" # !NOT USED below
 MODEL_PATH = ""
 WORLDS_PATH = ""
@@ -16,7 +34,7 @@ WORLDS_PATH = ""
                                      # $simvehicle_path
 LAUNCH_SITL_COMMAND = "python3 ~/gh_repos/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
 # LAUNCH_SITL_COMMAND = "python3 ~/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON"
-LAUNCH_SIMULATION_COMMAND = f"gz sim -r {WORLD}"
+LAUNCH_SIMULATION_COMMAND = f"gz sim -r {WORLD} {gaz_verbose}"
 ROS_GZ_BRIDGE_COMMAND = "ros2 run ros_gz_bridge parameter_bridge /camera@sensor_msgs/msg/Image[gz.msgs.Image"
 
 
@@ -58,4 +76,4 @@ if START_SITL:
     print("Starting SITL...")
     THREAD_SITL.start()
 
-print("All threads started successfully! You should see 3 terminals in total including this one...")
+print("All threads started successfully! You should see 3 terminals in total including this one (3rd terminal takes a bit of time to load)...")
