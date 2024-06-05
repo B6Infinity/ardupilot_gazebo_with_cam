@@ -22,7 +22,7 @@
             <mesh>
               <scale>1 1 1</scale>
               <!-- <uri>model://agriculture/meshes/untitled.dae</uri> -->
-              <uri>model://cpr_agriculture/meshes/agriculture_world.dae</uri>
+              <uri>model://agriculture/meshes/agriculture_world.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -46,7 +46,7 @@
             <mesh>
               <scale>1 1 1</scale>
               <!-- <uri>model://agriculture/meshes/untitled.dae</uri> -->
-              <uri>model://cpr_agriculture/meshes/agriculture_world.dae</uri>
+              <uri>model://agriculture/meshes/agriculture_world.dae</uri>
             </mesh>
           </geometry>
         </visual>
